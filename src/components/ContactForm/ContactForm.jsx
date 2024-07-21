@@ -4,17 +4,6 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from '../../features/contacts/phonebookSlice';
 
-//move save and load to other folder
-
-// const save = (key, value) => {
-//   try {
-//     const serializedState = JSON.stringify(value);
-//     localStorage.setItem(key, serializedState);
-//   } catch (error) {
-//     console.error("Set state error: ", error.message);
-//   }
-// };
-
 const ContactForm = () => {
   const contacts = useSelector(state => state.phonebook.contacts)
   const formState = {
@@ -23,33 +12,14 @@ const ContactForm = () => {
   }
 
   const [contactName, setContactName] = useState(formState.name);
-  const [contactNumber, setContactNumber] = useState(formState.number);
+  const [contactPhone, setContactPhone] = useState(formState.number);
 
   const dispatch = useDispatch()
 
-  //second version with function
-  // const compareNames = (firstValue, secondValue) => {
-  //   if (firstValue !== secondValue) {
-  //     return;
-  //   }
-  //   return true;
-  // };
 
   const addNewContact = (event) => {
     event.preventDefault();
 
-    //second version
-    // const isNameExist = props.contactsList.map((e) =>
-    //   compareNames(e.name, contactName)
-    // );
-
-    // first version
-    // if (props.contactsList) {
-    //   const isNameExist = props.contactsList.map((e) => e.name === contactName);
-    //   if (isNameExist.includes(true)) {
-    //   return alert(`${contactName} is already exist`);
-    //   }
-    // }  
     if (contacts) {
       const isNameExist = contacts.map((e) => e.name === contactName);
       if (isNameExist.includes(true)) {
@@ -61,14 +31,12 @@ const ContactForm = () => {
     const newContact = {
       name: contactName,
       id: contactId,
-      number: contactNumber,
+      phone: contactPhone,
     };
 
     dispatch(addContact(newContact))
-    // props.setContactsList([...props.contactsList, newContact]);
     setContactName("");
-    setContactNumber("");
-    // save("Contacts", [...props.contactsList, newContact])
+    setContactPhone("");
   };
 
   return (
@@ -91,12 +59,12 @@ const ContactForm = () => {
         Number
         <input
           type="tel"
-          name="number"
+          name="phone"
           style={{ maxWidth: "300px", padding: "5px", fontSize: "20px", borderRadius: "5px" }}
-          onChange={(e) => setContactNumber(e.target.value)}
+          onChange={(e) => setContactPhone(e.target.value)}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          value={contactNumber}
+          value={contactPhone}
           required
         />
       </label>
