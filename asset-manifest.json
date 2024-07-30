@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/phonebook-redux-mockapi/static/css/main.91524fbc.css",
+    "main.js": "/phonebook-redux-mockapi/static/js/main.1e5d6c86.js",
+    "index.html": "/phonebook-redux-mockapi/index.html",
+    "main.91524fbc.css.map": "/phonebook-redux-mockapi/static/css/main.91524fbc.css.map",
+    "main.1e5d6c86.js.map": "/phonebook-redux-mockapi/static/js/main.1e5d6c86.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.91524fbc.css",
+    "static/js/main.1e5d6c86.js"
+  ]
+}
